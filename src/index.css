@@ -11,8 +11,8 @@ html {
 
 
 body {
-  /* font-family : "Montserrat", sans-serif; */
-  background: white;
+  font-family: "Inter", sans-serif;
+  background: #F5F5F5;
   min-height: 100vh;
 }
 
