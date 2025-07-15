@@ -62,3 +62,13 @@
    background-color: white;
    margin: 20px auto 0; /* Centered, spaced from text */
 }
+
+
+.property-description p {
+    font-size:1rem;
+    font-family: "Playfair Display",cursive;
+     font-weight:300;
+
+
+
+}

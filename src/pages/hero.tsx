@@ -41,7 +41,12 @@ function Hero () {
 
 
             </div>
-
+            
+            <div className="property-description">  
+                <p>
+                  
+                </p>
+            </div>
 
             <div className="property-details"> 
 
