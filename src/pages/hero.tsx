@@ -28,19 +28,26 @@ function Hero () {
             </div>  
 
 
+            <div className="property-slideshow">
+                {heroData.options.map(( {title,link} , index)  => (
+                    <PropertyPictures key={`Image ${index+1}`} title={title} link={link}/>
 
-            <div className="image-container">
+                ))}
+            </div>
+
+            
+            {/* <div className="image-container">
 
                 <img src={image1} alt="Image1" className="image-child" />
 
                 {/* <div className="design-container" >
                     <p> Your Property </p>
-                </div> */}
+                </div> 
 
                 <img src={image2} alt="Image2" className="image-child" />
 
 
-            </div>
+            </div> */}
             
             <div className="property-description">  
                 <p>
@@ -75,13 +82,6 @@ function Hero () {
 
             </div>
 
-
-            <div className="property-slideshow">
-                {heroData.options.map(( {title,link} , index)  => (
-                    <PropertyPictures key={`Image ${index+1}`} title={title} link={link}/>
-
-                ))}
-            </div>
 
 
 

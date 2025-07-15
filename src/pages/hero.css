@@ -25,9 +25,9 @@
 
 .image-container .image-child {
     border: 1px solid white;
-    /* flex: 1 1 auto;  */
+    flex: 1 1 auto; 
     min-width: 0px; /* default min-width is auto so it dosent shinrk smaller*/
-    width:20vw; 
+
 }
 
 .image-container img {
@@ -36,7 +36,7 @@
     object-fit: cover;
 }
 
-.image-container .design-container{
+/* .image-container .design-container{
     width:20vw; 
     display: flex;
     align-items: center;   
@@ -45,7 +45,7 @@
     color:white;
     background-color:#1a2332;
     object-fit: contain;
-}
+} */
 
 /* increase rem media break points  */
 
@@ -75,8 +75,6 @@
     font-size:1rem;
     font-family: "Playfair Display",cursive;
      font-weight:300;
-
-
 
 }
 
