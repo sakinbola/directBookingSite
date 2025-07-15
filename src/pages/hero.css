@@ -15,6 +15,11 @@
     color:#1F2937;
 }
 
+.slide img {
+    width:100px;
+    height:100px;
+}
+
 
 /* .image-container {
     display:flex;
@@ -80,7 +85,7 @@
 }
 
 /* major breakpoints whole new design on mobile */
-@media (max-width:1440px) {
+/* @media (max-width:1440px) {
     .design-container p {
         font-size:3rem;
     }
@@ -96,4 +101,4 @@
     .design-container p {
         font-size:1rem;
     }
-}
+} */
