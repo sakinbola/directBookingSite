@@ -15,11 +15,41 @@
     color:#1F2937;
 }
 
+.property-slideshow {
+    display:flex;
+    
+}
 .slide img {
     width:100px;
     height:100px;
 }
 
+.arrow-button-right {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.arrow-button-left {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.arrow {
+    width:25px;
+    height:25px;
+}
 
 /* .image-container {
     display:flex;

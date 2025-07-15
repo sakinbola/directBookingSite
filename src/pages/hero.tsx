@@ -48,13 +48,19 @@ function Hero () {
 
     // use state react for currentindex 
 
-    const currentIndex = 0 
+    const [currentIndex,setCurrentIndex] = useState(1) 
+
+    const handleRightClick = () => {
+        setCurrentIndex(currentIndex + 1)
+    }
+
 
     return (
         <div className="hero-section">
 
             <div className="slideshow-container">
                 <div className="property-slideshow">
+                    
                     {heroData.options.map(({ title, source},index) => (
                         <PropertyPictures 
                         key={`Image ${index+1}`} 
@@ -62,10 +68,12 @@ function Hero () {
                         source={source}
                         currentIndex={currentIndex}
                         index={index}
+                        handleRightClick={handleRightClick}
                         />
                     ))}
                 </div>
             </div>
+
 
 
             <div className="title">
@@ -97,24 +105,61 @@ function Hero () {
 
 export default Hero 
 
+// bug catching tsx only 
 type PropertyCard = {
     title:string;
     source:string;
     currentIndex:number;
     index:number;
+    handleRightClick:() => void;
 };
 
-const PropertyPictures = ({title,source,currentIndex,index}:PropertyCard) => {
+const PropertyPictures = ({title,source,currentIndex,index,handleRightClick}:PropertyCard) => {
 
     // css transition instead of display none later 
-    if (index >= currentIndex && index < currentIndex+3) {
+    if (index===currentIndex+2) {
         return (
-        <div className="slide">
-            <img src={source} alt={title} id={title}/>
+        <div className="slide" style={{ position: "relative" }}>
+            <img src={source} alt={title} id={title} />
+            
+            <button className="arrow-button-right" onClick={handleRightClick}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="arrow">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+            </button>
         </div>
     )
+
     }
 
+    else if (index===currentIndex) {
+        return (
+        <div className="slide" style={{ position: "relative" }}>
+            <img src={source} alt={title} id={title} />
+            
+            <button className="arrow-button-left">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="arrow">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                </svg>
+            </button>
+        </div>
+    )
+
+}
+
+    else if (index===currentIndex+1) {
+        return (
+        <div className="slide" style={{ position: "relative" }}>
+            <img src={source} alt={title} id={title} />
+
+        </div>
+    )
+
+
+
+    }
+
+    // change class name className = 
     else {
         return (
         <div style={{display:"none"}} className="slide">
