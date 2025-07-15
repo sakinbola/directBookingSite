@@ -49,9 +49,32 @@ function Hero () {
     // use state react for currentindex 
 
     const [currentIndex,setCurrentIndex] = useState(1) 
+    const maxIndex = heroData.options.length;
+    const visibleCount = 3
 
     const handleRightClick = () => {
-        setCurrentIndex(currentIndex + 1)
+
+        if ((currentIndex+1) > maxIndex-visibleCount){
+            setCurrentIndex(0)
+        }
+        else {
+            setCurrentIndex(currentIndex + 1)
+        }
+
+
+
+    
+    }
+
+    const handleLeftClick = () => {
+
+        if ((currentIndex - 1) === 0) {
+
+        } 
+        else {
+            setCurrentIndex(currentIndex - 1)     
+        }
+
     }
 
 
@@ -59,8 +82,17 @@ function Hero () {
         <div className="hero-section">
 
             <div className="slideshow-container">
+
+
+            <button className="arrow-button-right" onClick={handleRightClick}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="arrow">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+            </button>
+
                 <div className="property-slideshow">
                     
+                    {/* splice in future  */}
                     {heroData.options.map(({ title, source},index) => (
                         <PropertyPictures 
                         key={`Image ${index+1}`} 
@@ -68,10 +100,16 @@ function Hero () {
                         source={source}
                         currentIndex={currentIndex}
                         index={index}
-                        handleRightClick={handleRightClick}
+                        isVisible = {index>=currentIndex && index < currentIndex+visibleCount}
                         />
                     ))}
                 </div>
+
+            <button className="arrow-button-left" onClick={handleLeftClick}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="arrow">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                </svg>
+            </button>
             </div>
 
 
@@ -111,62 +149,18 @@ type PropertyCard = {
     source:string;
     currentIndex:number;
     index:number;
-    handleRightClick:() => void;
+    isVisible:boolean;
+    // handleLeftClick:() => void;
 };
 
-const PropertyPictures = ({title,source,currentIndex,index,handleRightClick}:PropertyCard) => {
+const PropertyPictures = ({title,source,isVisible}:PropertyCard) => {
 
     // css transition instead of display none later 
-    if (index===currentIndex+2) {
         return (
-        <div className="slide" style={{ position: "relative" }}>
+        <div className= {`slide ${isVisible ? "visible" : "hidden"}`} style={{ position: "relative" }}>
             <img src={source} alt={title} id={title} />
-            
-            <button className="arrow-button-right" onClick={handleRightClick}>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="arrow">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                </svg>
-            </button>
         </div>
-    )
+
+        )
 
     }
-
-    else if (index===currentIndex) {
-        return (
-        <div className="slide" style={{ position: "relative" }}>
-            <img src={source} alt={title} id={title} />
-            
-            <button className="arrow-button-left">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="arrow">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-                </svg>
-            </button>
-        </div>
-    )
-
-}
-
-    else if (index===currentIndex+1) {
-        return (
-        <div className="slide" style={{ position: "relative" }}>
-            <img src={source} alt={title} id={title} />
-
-        </div>
-    )
-
-
-
-    }
-
-    // change class name className = 
-    else {
-        return (
-        <div style={{display:"none"}} className="slide">
-            <img src={source} alt={title} id={title}/>
-        </div>
-    )
-    }
-
-
-}
