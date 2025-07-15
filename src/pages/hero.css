@@ -21,9 +21,13 @@
     overflow: none;
 }
 
+
+
 .image-container .image-child {
-    flex: 1 1 auto; 
+    border: 1px solid white;
+    /* flex: 1 1 auto;  */
     min-width: 0px; /* default min-width is auto so it dosent shinrk smaller*/
+    width:20vw; 
 }
 
 .image-container img {
@@ -32,36 +36,39 @@
     object-fit: cover;
 }
 
-.image-container .design-container{ 
-    text-align:center;
-    display:block;
+.image-container .design-container{
+    width:20vw; 
+    display: flex;
+    align-items: center;   
+    justify-content: center;
     border: 1px solid white;
     color:white;
     background-color:#1a2332;
-
-    padding:60px 40px;
+    object-fit: contain;
 }
 
 /* increase rem media break points  */
 
-.design-container p {
+/* .design-container p {
+    text-align:center;
     font-weight:700;
     font-size:2rem;
     font-family: "Playfair Display", serif;
     text-transform: uppercase;
     letter-spacing:2px;
     line-height: 1.2;
+    padding:2rem 3rem
 }
 
-/* after creates virtual element after actual elment purely css*/
+ after creates virtual element after actual elment purely css
 .image-container .design-container p::after {
    content: '';
    display: block;
-   width: 80px; /* Short line */
+   width: 80px; Short line 
    height: 2px;
    background-color: white;
-   margin: 20px auto 0; /* Centered, spaced from text */
-}
+   margin: 20px auto 0;  Centered, spaced from text 
+} */
 
 
 .property-description p {

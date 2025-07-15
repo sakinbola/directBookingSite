@@ -33,9 +33,9 @@ function Hero () {
 
                 <img src={image1} alt="Image1" className="image-child" />
 
-                <div className="design-container" >
+                {/* <div className="design-container" >
                     <p> Your Property </p>
-                </div>
+                </div> */}
 
                 <img src={image2} alt="Image2" className="image-child" />
 
@@ -44,7 +44,7 @@ function Hero () {
             
             <div className="property-description">  
                 <p>
-                  
+                    
                 </p>
             </div>
 
