@@ -1,6 +1,7 @@
+import { useState } from "react";
+
 import "./hero.css"
 
-// Import images statically
 import img1 from "./../images/img_1.jpg";
 import img2 from "./../images/img_2.jpg";
 import img3 from "./../images/img_3.jpg";
@@ -44,13 +45,29 @@ const heroData = {
 }
 
 function Hero () {
+
+    // use state react for currentindex 
+
+    const currentIndex = 0 
+
     return (
         <div className="hero-section">
-            <div className="property-slideshow">
-                {heroData.options.map(({ title, source }, index) => (
-                    <PropertyPictures key={`Image ${index+1}`} title={title} source={source}/>
-                ))}
+
+            <div className="slideshow-container">
+                <div className="property-slideshow">
+                    {heroData.options.map(({ title, source},index) => (
+                        <PropertyPictures 
+                        key={`Image ${index+1}`} 
+                        title={title} 
+                        source={source}
+                        currentIndex={currentIndex}
+                        index={index}
+                        />
+                    ))}
+                </div>
             </div>
+
+
             <div className="title">
                 <h1> Elegant Mississuaga Home </h1>   
             </div>  
@@ -83,12 +100,28 @@ export default Hero
 type PropertyCard = {
     title:string;
     source:string;
+    currentIndex:number;
+    index:number;
 };
 
-const PropertyPictures = ({title,source}:PropertyCard) => {
-    return (
-        <div className="slide" >
-            <img src={source} alt={title} />
+const PropertyPictures = ({title,source,currentIndex,index}:PropertyCard) => {
+
+    // css transition instead of display none later 
+    if (index >= currentIndex && index < currentIndex+3) {
+        return (
+        <div className="slide">
+            <img src={source} alt={title} id={title}/>
         </div>
     )
+    }
+
+    else {
+        return (
+        <div style={{display:"none"}} className="slide">
+            <img src={source} alt={title} id={title}/>
+        </div>
+    )
+    }
+
+
 }
