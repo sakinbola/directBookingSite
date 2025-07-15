@@ -42,7 +42,7 @@
 
 .signUpButton .btn {
     display: inline-block; /* Makes the anchor behave like a button */
-    background-color: #10B981;
+    background-color: #0891B2;
     color: #1F2937;
     padding: 0.7rem 1.4rem;
     border: 0 solid;
@@ -57,7 +57,6 @@
 
 .signUpButton .btn:hover {
     text-decoration: none;;
-    background: blue;
     opacity: 0.7;
     color: white;
 }
